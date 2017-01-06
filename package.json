@@ -1,0 +1,41 @@
+{
+  "name": "vuesearch",
+  "version": "0.1.0",
+  "description": "Visual Search for Vue.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "webpack --config ./demo/webpack.config.js",
+    "build-watch": "webpack --config ./demo/webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbeadle/vuesearch.git"
+  },
+  "keywords": [
+    "VueSearch",
+    "Vue.js"
+  ],
+  "author": "tbeadle@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tbeadle/vuesearch/issues"
+  },
+  "homepage": "https://github.com/tbeadle/vuesearch#readme",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "vue": "^2.1.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "css-loader": "^0.25.0",
+    "vue-loader": "^10.0.0",
+    "vue-template-compiler": "^2.1.8",
+    "webpack": "^2.1.0-beta.28",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
