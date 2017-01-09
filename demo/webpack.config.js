@@ -5,7 +5,7 @@ module.exports = {
 	context: path.resolve(__dirname),
 	entry: {
 		'main': './index',
-		'vendor': ['vue'],
+		'vendor': ['lodash', 'vue', 'vuex'],
 	},
 	output: {
 		path: path.resolve(__dirname, 'bundles'),
@@ -42,18 +42,14 @@ module.exports = {
 			name: 'vendor',
 			filename: 'vendor.bundle.js',
 		}),
-		new webpack.optimize.UglifyJsPlugin({
-			test: /vendor\.bundle\.js/,
-		}),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: '"production"'
-			}
-		}),
 	],
 	resolve: {
 		alias: {
 			'vue$': 'vue/dist/vue.common.js',
 		},
 	},
+}
+
+if (process.env.NODE_ENV == 'production') {
+	module.exports.plugins.append(new webpack.optimize.UglifyJsPlugin())
 }
