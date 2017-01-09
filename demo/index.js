@@ -1,12 +1,18 @@
 import Vue from 'vue';
-import VSSearch from '../components/search.vue';
+import Helper from '../components/helper.vue';
 
 new Vue({
 	el: '#app',
+	template: '<vs-helper :initialSelections="selections" :config="config"></vs-helper>',
 	components: {
-		'vs-search': VSSearch,
+		'vs-helper': Helper,
 	},
 	data: {
-		'config': {},
+		config: {
+		},
+		selections: [
+			{'facet': 'Tags', 'value': 'platform,4000'},
+			{'facet': 'Passes', 'value': null},
+		],
 	},
 });
