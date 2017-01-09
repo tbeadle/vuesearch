@@ -1,11 +1,24 @@
-import Vue from 'vue';
-import Helper from '../components/helper.vue';
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+import VsHelper from '../components/helper.vue'
+import vsstore from '../store'
+
+var store = new Vuex.Store({
+	strict: process.env.NODE_ENV !== 'production',
+	modules: {
+		vsstore,
+	},
+})
 
 new Vue({
 	el: '#app',
-	template: '<vs-helper :initialSelections="selections" :config="config"></vs-helper>',
+	store,
+	template: '<vs-helper></vs-helper>',
 	components: {
-		'vs-helper': Helper,
+		VsHelper,
 	},
 	data: {
 		config: {
@@ -15,4 +28,4 @@ new Vue({
 			{'facet': 'Passes', 'value': null},
 		],
 	},
-});
+})

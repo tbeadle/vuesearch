@@ -1,16 +1,16 @@
 <template>
 	<div class='vs-selected-facet'>
 		<span @click='removeSelection' class='glyphicon glyphicon-remove-sign'></span>
-		<span class='vs-selected-facet-value'>{{ value }}</span>
+		<span class='vs-selected-facet-value'>{{ facet }}</span>
 	</div>
 </template>
 
 <script>
 export default {
-	props: ['value'],
+	props: ['facet'],
 	methods: {
 		removeSelection() {
-			this.$emit('removeSelection', this.value);
+			this.$store.commit('vsstore/removeSelection', this.facet);
 		},
 	},
 }
