@@ -1,5 +1,5 @@
 <template>
-	<div class='vs-helper'>
+	<div class='vuesearch'>
 		<vs-selections></vs-selections>
 		<vs-facet-input></vs-facet-input>
 	</div>

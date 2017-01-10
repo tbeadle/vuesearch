@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import VsHelper from '../components/helper.vue'
+import Vuesearch from '../components/vuesearch.vue'
 import vsstore from '../store'
 
 var store = new Vuex.Store({
@@ -16,9 +16,9 @@ var store = new Vuex.Store({
 new Vue({
 	el: '#app',
 	store,
-	template: '<vs-helper></vs-helper>',
+	template: '<vuesearch></vuesearch>',
 	components: {
-		VsHelper,
+		Vuesearch,
 	},
 	data: {
 		config: {
