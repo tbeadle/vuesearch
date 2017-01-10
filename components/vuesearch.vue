@@ -14,5 +14,9 @@ export default {
 		VsFacetInput,
 		VsSelections,
 	},
+	props: ['config', 'selections'],
+	created() {
+		this.$store.commit('vsstore/configure', this.config)
+	},
 }
 </script>

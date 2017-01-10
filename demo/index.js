@@ -16,12 +16,16 @@ var store = new Vuex.Store({
 new Vue({
 	el: '#app',
 	store,
-	template: '<vuesearch></vuesearch>',
+	template: '<vuesearch :config="config" :selections="selections"></vuesearch>',
 	components: {
 		Vuesearch,
 	},
 	data: {
 		config: {
+			facets: {
+				'Tags': null,
+				'Passes': null,
+			}
 		},
 		selections: [
 			{'facet': 'Tags', 'value': 'platform,4000'},

@@ -4,17 +4,10 @@ export default {
 	namespaced: true,
 	state: {
 		config: {
-			/* TODO These should get populated by an API call during store
-			 * creation.
-			 */
 			facets: {
-				'Tags': null,
-				'Passes': null,
 			},
 		},
 		selections: [
-			{facet: 'Tags', value: 'platform,4000'},
-			{facet: 'Passes', value: null},
 		],
 	},
 	getters: {
@@ -25,6 +18,9 @@ export default {
 		},
 	},
 	mutations: {
+		configure(state, config) {
+			state.config = config
+		},
 		removeSelection(state, facet) {
 			let idx = _.findIndex(
 				state.selections,
