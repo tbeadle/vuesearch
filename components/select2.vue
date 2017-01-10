@@ -1,10 +1,13 @@
 <template>
-	<select><slot></slot></select>
+	<select>
+		<slot></slot>
+		<option v-for='option in options' :value='option.value'>{{ option.text }}</option>
+	</select>
 </template>
 
 <script>
 	export default {
-		props: ['options', 'value', 'config'],
+		props: ['options', 'value', 'config', 'events'],
 		mounted() {
 			this.createSelect2()
 		},
@@ -13,23 +16,26 @@
 		},
 		methods: {
 			createSelect2() {
-				$(this.$el)
+				var sel2 = $(this.$el)
 					.val(this.value)
-					.select2({
-						...(this.config || {}),
-						data: this.options,
-					})
+					.select2(this.config || {})
 					.on(
 						'change',
 						() => {
 							this.$emit('input', this.value)
 						}
 					)
+				_.forIn(
+					this.events,
+					(func, evnt) => {
+						sel2.on(evnt, func)
+					}
+				)
 			},
 		},
 		watch: {
-			options(options) {
-				$(this.$el).off().select2('destroy').empty()
+			options() {
+				$(this.$el).off().select2('destroy')
 				this.createSelect2()
 			},
 			value(value) {

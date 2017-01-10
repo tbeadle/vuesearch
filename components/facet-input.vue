@@ -1,5 +1,5 @@
 <template>
-	<select2 class='vs-facet-input' :options='facetOptions' :config='{placeholder: "Select a facet", allowClear: true, minimumResultsForSearch: Infinity}'></select2>
+	<select2 class='vs-facet-input' :options='facetOptions' :config='config'><option></option></select2>
 </template>
 
 <script>
@@ -17,6 +17,15 @@ export default {
 	components: {
 		Select2,
 	},
+	data() {
+		return {
+			config: {
+				placeholder: "Select a facet",
+				allowClear: true,
+				minimumResultsForSearch: Infinity,
+			},
+		}
+	},
 	computed: {
 		...mapGetters('vsstore', ['facets']),
 		facetOptions() {
@@ -25,9 +34,3 @@ export default {
 	},
 }
 </script>
-
-<style>
-.vs-facet-input + .select2-container {
-	min-width: 120px;
-}
-</style>
