@@ -6,13 +6,13 @@
 
 <script>
 import VsSelection from './selection.vue'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
 	components: {
 		VsSelection,
 	},
-	computed: mapGetters('vsstore', [
+	computed: mapState('vsstore', [
 		'selections'
 	]),
 }
