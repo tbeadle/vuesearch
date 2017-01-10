@@ -1,5 +1,5 @@
 <template>
-	<select2 class='vs-facet-input' :options='facetOptions' :config='config'><option></option></select2>
+	<select2 class='vs-facet-input' :options='facetOptions' :config='config' @input='facetSelected($event)'><option></option></select2>
 </template>
 
 <script>
@@ -26,10 +26,12 @@ export default {
 			},
 		}
 	},
-	computed: {
-		...mapGetters('vsstore', ['facets']),
-		facetOptions() {
-			return _.map(this.facets, (facet) => ({ id: facet, text: facet}))
+	computed: mapGetters('vsstore', ['facets', 'facetOptions']),
+	methods: {
+		facetSelected(val) {
+			if (val) {
+				this.$store.commit('vsstore/selectFacet', val)
+			}
 		},
 	},
 }

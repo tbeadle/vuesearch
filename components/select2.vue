@@ -7,22 +7,21 @@
 
 <script>
 	export default {
-		props: ['options', 'value', 'config', 'events'],
+		props: ['options', 'initialValue', 'config', 'events'],
 		mounted() {
 			this.createSelect2()
 		},
 		destoyed() {
-			$(this.$el).off().select2('destroy')
+			this.destroy()
 		},
 		methods: {
 			createSelect2() {
 				var sel2 = $(this.$el)
 					.val(this.value)
 					.select2(this.config || {})
-					.on(
-						'change',
-						() => {
-							this.$emit('input', this.value)
+					.on('change',
+						(e) => {
+							this.$emit('input', e.val)
 						}
 					)
 				_.forIn(
@@ -32,14 +31,24 @@
 					}
 				)
 			},
+			destroy() {
+				$(this.$el).off().select2('destroy')
+			},
+		},
+		computed: {
+			value: {
+				get() {
+					return $(this.$el).val()
+				},
+				set(val) {
+					$(this.$el).val(val)
+				}
+			},
 		},
 		watch: {
 			options() {
-				$(this.$el).off().select2('destroy')
+				this.destroy()
 				this.createSelect2()
-			},
-			value(value) {
-				$(this.$el).val(value)
 			},
 		},
 	}

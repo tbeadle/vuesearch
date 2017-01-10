@@ -23,13 +23,16 @@ new Vue({
 	data: {
 		config: {
 			facets: {
-				'Tags': null,
+				'Config Set': {
+					'type': 'ajax',
+				},
+				'Tags': {
+					'type': 'text',
+					'placeholder': 'Comma-separated tags',
+				},
 				'Passes': null,
 			}
 		},
-		selections: [
-			{'facet': 'Tags', 'value': 'platform,4000'},
-			{'facet': 'Passes', 'value': null},
-		],
+		selections: [],
 	},
 })
