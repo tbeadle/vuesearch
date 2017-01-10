@@ -50,6 +50,14 @@ module.exports = {
 	},
 }
 
-if (process.env.NODE_ENV == 'production') {
-	module.exports.plugins.append(new webpack.optimize.UglifyJsPlugin())
+if (process.env.NODE_ENV === 'production') {
+	module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin())
+	module.exports.module.rules.push({
+		test: /\.js$/,
+		loader: 'strip-loader',
+		exclude: /node_modules/,
+		query: {
+			'strip': ['console.log'],
+		},
+	})
 }
